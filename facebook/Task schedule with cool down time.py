@@ -16,6 +16,7 @@ def get_time(schedule, k):
 
 def minimal_time(schedule,k):
     total_map={}
+    num_sche=len(schedule)
     for ite in schedule:
         if ite not in total_map:
             total_map[ite]=1
@@ -26,32 +27,72 @@ def minimal_time(schedule,k):
         heapq.heappush(heap,(-total_map[ite],ite))
     output=[]
     putback=[]
-    # bug!
-    while True:
-        while len(heap)!=0:
-            if len(putback)<k:
-                item=heapq.heappop(heap)
-                output.append(item[1])
-                if item[0] <-1:
-                    putback.append((item[0]+1,item[1]))
+
+    while len(heap)!=0 or len(putback)!=0:
+        if len(putback)<=k and len(heap)!=0:
+            item=heapq.heappop(heap)
+            output.append(item[1])
+            num_sche-=1
+            if num_sche==0:
+                break
+            putback.append((item[0],item[1]))
+        else: # you should
+            while len(heap)==0 and len(putback)<=k:  # we can use nothing now, since everything is in the window
+                output.append('')
+                putback.append('')
+            if len(putback)>k:    # now we can put back the head if it is valid
+                head=putback.pop(0)
+                if head !='' and head[0]<-1:
+                    heapq.heappush(heap,(head[0]+1,head[1]))
+
+    print output
+    print len(output)
+
+def minimal_time2(schedule,k):
+    total_map = {}
+    num_sche = len(schedule)
+    for ite in schedule:
+        if ite not in total_map:
+            total_map[ite] = 1
+        else:
+            total_map[ite] += 1
+    heap = []
+    for ite in total_map:
+        heapq.heappush(heap, (-total_map[ite], ite))
+    output = []
+    start=0
+    end=0
+
+    while len(heap) != 0 or len(total_map) != 0:
+        if end-start <= k and len(heap) != 0:
+            item = heapq.heappop(heap)
+            output.append(item[1])
+            num_sche -= 1
+            if num_sche == 0:
+                break
+            end+=1
+            if item[0]==-1:
+                del total_map[item[1]]
             else:
-                heapq.heappush(heap,putback.pop(0))
+                total_map[item[1]]-=1
+        else:  # you should
+            while len(heap) == 0 and end-start <= k:  # we can use nothing now, since everything is in the window
+                output.append('')
+                end+=1
+            if end-start > k:  # now the window size is larger than k
+                head = output[start]
+                start+=1
+                if head != '' and head in total_map:
+                    heapq.heappush(heap, (-total_map[head] , head))
 
-        if len(putback)==0:
-            break
-        #for ite in putback:
-        #    heapq.heappush(heap,ite)
-        #putback=[]
-    return output
-
+    print output
+    print len(output)
 
 s=[]
 s.append('abbabbc')
-#s.append('bb')
-#s.append('aab')
+s.append('abbacbcd')
+s.append('aab')
 for ite in s:
-    print get_time(ite,3)
-    print minimal_time(ite,3)
-    print get_time(minimal_time(ite, 3),3)
-
-
+    #print get_time(ite,3)
+    minimal_time(ite,3)
+    minimal_time2(ite,3)
