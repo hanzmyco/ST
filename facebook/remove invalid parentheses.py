@@ -24,8 +24,27 @@ def dfs_helper(s,visited):
                     ans.extend(dfs_helper(new_s,visited))
     return ans
 
+def dfs_helper1(s,visited,numMistake):
+    ans=[]
+    for index in xrange(0,len(s)):
+        if s[index] in ('(',')'):
+            new_s=s[:index]+s[index+1:]
+            if new_s not in visited:
+                visited.add(new_s)
+                new_mistakes=calc_Mistake(new_s)
+                if new_mistakes==0:
+                    ans.append(new_s)
+                else:
+                    if new_mistakes <= numMistake:
+                        ans.extend(dfs_helper1(new_s,visited,new_mistakes))
+    return ans
 
-
+def dfs(s):
+    num_mistake=calc_Mistake(s)
+    if num_mistake==0:
+        return [s]
+    visited=set([s])
+    return dfs_helper1(s,visited,num_mistake)
 
 
 def bfs(s):
@@ -56,9 +75,10 @@ def bfs(s):
 
 s=['()())()','(a)())()',')(','x(']
 s1=['x(']
-s2=['))(()(']
-print bfs(s2[0])
-print dfs(s2[0])
+s2=['))(()(','n']
+print bfs(s2[1])
+print dfs(s2[1])
+
 '''
 for i in s:
     print dfs(i)

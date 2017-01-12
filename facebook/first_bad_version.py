@@ -11,5 +11,5 @@ def findfirstbad(n):
         return start
     return end
 
-def isvadversion(i)
+def badversion(i):
     return True

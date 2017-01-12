@@ -38,5 +38,5 @@ def minMeetingRooms(intervals):
         return maxx
 
 
-intervals=[[1,2],[3,5],[6,19],[2,100],[7,13]]
+intervals=[[1,2],[3,5],[6,19],[2,3],[7,13]]
 print minMeetingRooms(intervals)

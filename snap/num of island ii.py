@@ -61,7 +61,5 @@ points=[[0,0],[0,1],[1,2],[2,1],[1,1]]
 position=[[0,0,0],[0,0,0],[0,0,0]]
 u=unionfind(position)
 for ite in points:
-    if ite==[1,1]:
-        print 'lol'
     u.insert(tuple(ite))
     print u.groupNum()

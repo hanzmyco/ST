@@ -62,9 +62,9 @@ def minimal_time2(schedule,k):
     output = []
     start=0
     end=0
-
+    print end-len(output)
     while len(heap) != 0 or len(total_map) != 0:
-        if end-start <= k and len(heap) != 0:
+        if len(output)-start <= k and len(heap) != 0:
             item = heapq.heappop(heap)
             output.append(item[1])
             num_sche -= 1
@@ -73,25 +73,27 @@ def minimal_time2(schedule,k):
             end+=1
             if item[0]==-1:
                 del total_map[item[1]]
+
             else:
                 total_map[item[1]]-=1
         else:  # you should
             while len(heap) == 0 and end-start <= k:  # we can use nothing now, since everything is in the window
                 output.append('')
                 end+=1
-            if end-start > k:  # now the window size is larger than k
+            if len(output)-start > k:  # now the window size is larger than k
                 head = output[start]
                 start+=1
                 if head != '' and head in total_map:
                     heapq.heappush(heap, (-total_map[head] , head))
 
     print output
-    print len(output)
+    #print len(output)
 
 s=[]
 s.append('abbabbc')
 s.append('abbacbcd')
 s.append('aab')
+s.append('abcdefg')
 for ite in s:
     #print get_time(ite,3)
     minimal_time(ite,3)
