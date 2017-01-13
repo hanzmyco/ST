@@ -5,10 +5,11 @@ class TreeNode(object):
          self.right = None
 
 def serialize(root):
-    que = [root]
+    que = collections.deque()
+    que.append(root)
     result=''
     while len(que) != 0:
-        ite = que.pop(0)
+        ite = que.popleft()
         if ite != None:
             result += str(ite.val)+' '
             que.append(ite.left)
@@ -22,10 +23,10 @@ def deserialize(data):
     list_node=data.strip().split(' ')
     index=0
     root=TreeNode(int(list_node[index]))
-    que=[root]
-    index+=1
+    que = collections.deque()
+    que.append(root)index+=1
     while len(que)!=0:
-        t=que.pop(0)
+        t=que.popleft()
         if index==len(list_node):
             break
         if list_node[index]!='#':
