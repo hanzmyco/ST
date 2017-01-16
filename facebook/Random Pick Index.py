@@ -1,16 +1,24 @@
-# two factors: 1. whether every node is linked with each other
-# 2. if each node is linked with each other in one path
+import random
+class Solution(object):
+    def __init__(self, nums):
+        """
 
+        :type nums: List[int]
+        :type numsSize: int
+        """
+        self.nums = nums
 
-def validTree(n,edges):
-    roots=[-1]*n
-    for edge in edges:
-        root1,root2=find(roots,edge[0]),find(roots,edge[1])
-        if root1==root2:
-            return False
-        roots[root1]=root2
-    return len(edges)==n-1
-def find(roots,vertice):
-    while roots[vertice]!=-1:
-        vertice=roots[vertice]
-    return vertice
+    def pick(self, target):
+        """
+        :type target: int
+        :rtype: int
+        """
+        cnt = 0
+        res = -1
+        for i in xrange(0, len(self.nums)):
+            if self.nums[i] != target:
+                continue
+            cnt += 1
+            if random.randint(0, cnt - 1) == 0:
+                res = i
+        return res

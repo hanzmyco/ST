@@ -3,6 +3,10 @@ class ListNode(object):
          self.val = x
          self.next = None
 
+def recursion(head):
+        if head==None:
+            return None
+        return helper(head)[0]
 
 def helper(head):
     if head.next != None:
