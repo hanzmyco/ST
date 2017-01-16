@@ -1,3 +1,4 @@
+# there is some bug for this method, ignore it
 import collections
 def calc_Mistake(s):
     a=0
