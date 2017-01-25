@@ -1,41 +1,4 @@
 import heapq
-import copy
-
-
-
-def dfs2(cur,output,dic,box,l,dic2):
-    output.append(cur)
-    if len(output)==l:
-        box.append(copy.deepcopy(output))
-    if cur in dic:
-        for ite in dic[cur]:
-            if dic2[(cur,ite)]>0:
-                dic2[(cur,ite)]-=1
-                dfs2(ite,output,dic,box,l,dic2)
-                dic2[(cur, ite)] += 1
-    output.pop()
-    return
-
-
-def main2(tickets):
-    dic={}
-    dic2={}
-    for ite in tickets:
-        if ite[0] not in dic:
-            dic[ite[0]]=[ite[1]]
-            dic2[(ite[0],ite[1])]=1
-        else:
-            dic[ite[0]].append(ite[1])
-            if (ite[0],ite[1]) in dic2:
-                dic2[(ite[0],ite[1])]+=1
-            else:
-                dic2[(ite[0], ite[1])] = 1
-
-    l=len(tickets)
-    output=[]
-    box=[]
-    dfs2('a',output,dic,box,l+1,dic2)
-    print box
 
 def dfs(cur,output,dic):
     while cur in dic and len(dic[cur])!=0:

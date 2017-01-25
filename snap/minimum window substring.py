@@ -1,4 +1,62 @@
 import collections
+
+def redo(s,t):
+    res=''
+    minn=10000
+    l1=len(s)
+    l2=len(t)
+    if l1==0 or l2==0:
+        return ''
+    if l2 == 1:
+        if t in s:
+            return t
+        else:
+            return ''
+    start,end=0,-1
+    position=collections.OrderedDict()
+    num_t=l2
+    num_each={}
+    for ite in t:
+        if ite not in num_each:
+            num_each[ite]=1
+        else:
+            num_each[ite]+=1
+    while start < l1 and end <l1:
+        while start <l1 and s[start] not in num_each:
+            start+=1
+        if end==-1:
+            end=start
+        else:
+            end+=1
+        while end<l1 and num_t>0:
+            if s[end] in num_each :
+                if num_each[s[end]]>0:
+                    num_t-=1
+                num_each[s[end]]-=1
+                position[end]=s[end]
+                if num_t==0:
+                   break
+            end+=1
+        if end==l1:
+            break
+        for index in position:
+            if num_t==0:
+                if end-index+1 <minn:
+                    minn=end-index+1
+                    res=s[index:end+1]
+                if num_each[s[index]]==0:
+                    num_t += 1
+                num_each[s[index]]+=1
+                del position[index]
+            else:
+                break
+    return res
+
+
+
+
+
+
 def min_window_1(s,t):
     if len(s) == 0 or len(t) == 0:
         return None
@@ -135,4 +193,7 @@ def min_window_2(s,t):
 
 s='adobecodebanc'
 t='abc'
-print (min_window_2(s,t))
+s1='aa'
+t1='aa'
+#print (min_window_2(s,t))
+print (redo(s,t))
