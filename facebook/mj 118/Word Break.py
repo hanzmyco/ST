@@ -1,3 +1,12 @@
+'''
+use a map to store all the word in one length, that is <key,value> == <length, set()>
+loop throguh lengh, and then loop through  (0,i), to get a separate point
+
+
+'''
+
+
+
 def wordBreak(self, s, wordDict):
     """
     :type s: str

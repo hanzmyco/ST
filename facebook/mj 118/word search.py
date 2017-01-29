@@ -1,3 +1,13 @@
+'''
+use dfs as intuitive, as each word cannot be used more than once in one path, use a hashmap to store whether one word has been used or not
+
+time complexity: m*n*4^k, k is the length of the word
+
+space complexity: k + k , k is the size of recursion ( height of the tree), as we delete dic[(i,j)], we only keep at most k statuses
+ we can even do it on the board to make the space complexity to k
+'''
+
+
 def dfs(self, board, m, n, i, j, word, dic):
     if board[i][j] == word[0]:
         dic[(i, j)] = 1
@@ -12,7 +22,7 @@ def dfs(self, board, m, n, i, j, word, dic):
             tag = tag or self.dfs(board, m, n, i + 1, j, word[1:], dic)
         if j < n - 1 and ((i, j + 1) not in dic or dic[(i, j + 1)] == 0):
             tag = tag or self.dfs(board, m, n, i, j + 1, word[1:], dic)
-        dic[(i, j)] = 0
+        del dic[(i,j)]
         return tag
     else:
         return False
@@ -36,3 +46,4 @@ def exist(self, board, word):
             if self.dfs(board, m, n, i, j, word, dic):
                 return True
     return False
+

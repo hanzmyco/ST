@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+'''
+记录每个头的位置，每次都从这个头开始找，可能会考KMP
+'''
+
 def strStr(haystack, needle):
     """
     :type haystack: str

@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+'''
+以每个gate为中心开始层次遍历，先把所有gate放到队列中，那么这样就用了 bfs 自带的效果：新访问到的
+一定是最短路径，那么以后这个点就不用访问了
+'''
 def wallsAndGates(self, rooms):
     """
     :type rooms: List[List[int]]

@@ -1,3 +1,4 @@
+from collections import deque
 class TreeNode(object):
     def __init__(self, x):
          self.val = x
@@ -5,7 +6,7 @@ class TreeNode(object):
          self.right = None
 
 def serialize(root):
-    que = collections.deque()
+    que = deque()
     que.append(root)
     result=''
     while len(que) != 0:
@@ -23,8 +24,9 @@ def deserialize(data):
     list_node=data.strip().split(' ')
     index=0
     root=TreeNode(int(list_node[index]))
-    que = collections.deque()
-    que.append(root)index+=1
+    que = deque()
+    que.append(root)
+    index+=1
     while len(que)!=0:
         t=que.popleft()
         if index==len(list_node):

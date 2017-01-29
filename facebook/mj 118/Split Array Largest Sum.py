@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+'''
+
+'''
+
+
 def splitArray(nums, m):
     """
     :type nums: List[int]

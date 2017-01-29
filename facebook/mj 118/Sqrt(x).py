@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+'''
+二分，看看中间那个的平方如果小于= x，start=mid，否则反之
+也是相差两个为止，
+'''
+
+
 def mySqrt(self, x):
     """
     :type x: int

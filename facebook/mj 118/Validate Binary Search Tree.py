@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+'''
+一开始就传入 low high 去界定，左右子树根据自身情况
+'''
 import sys
 
 def valid(root,low,high):

@@ -8,10 +8,10 @@ def ladderLength(beginWord, endWord, wordList):
         for j in xrange(0,len(ite)):
             for i in xrange(0,26):
                 letter=str(unichr(97+i))
-                if ite[:j] + letter + ite[j + 1:] == endWord:
-                    return map[ite] + 1
-
                 if ite[:j]+letter+ite[j+1:] in wordList and ite[:j] + letter + ite[j + 1:] not in map:
+                    if ite[:j] + letter + ite[j + 1:] == endWord:
+                        return map[ite] + 1
+
                     map[ite[:j]+letter+ite[j+1:]]=map[ite]+1
                     que.append(ite[:j]+letter+ite[j+1:])
 

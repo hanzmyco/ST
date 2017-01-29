@@ -1,4 +1,11 @@
+# -*- coding: utf-8 -*-
+'''
+循环的写法：先sort，然后每次检查当前值与上一个值是不是一样，如果不一样，那么可以从0开始
+每个集合都添加当前值，如果一样，那么就是从上一个（几个）与当前值一样的开始添加
+'''
+
 import copy
+
 def recur(nums, index, output, current):
     for i in xrange(index, len(nums)):
         if i == index or nums[i] != nums[i - 1]:
