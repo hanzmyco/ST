@@ -1,8 +1,20 @@
 # -*- coding: utf-8 -*-
 '''
-
+二分式的查找看看能不能被分成，
 '''
 
+def split(nums,m,mid):
+    res=0
+    count=1
+    for ite in nums:
+        if res+ite <=mid:
+            res+=ite
+        else:
+            count+=1
+            res=ite
+            if count >m:
+                return False
+    return True
 
 def splitArray(nums, m):
     """
@@ -10,18 +22,17 @@ def splitArray(nums, m):
     :type m: int
     :rtype: int
     """
-    l = 0
-    r = 0
-    for ite in nums:
-        l = max(l, ite)
-        r += ite
-    while l < r:
+    l=max(nums)
+    r=sum(nums)
+    while l < r-1:
         mid = l + (r - l) / 2
-        if self.can_split(nums, m, mid):
+        if split(nums, m, mid):
             r = mid
         else:
             l = mid + 1
-    return l
+    if split(nums,m,l):
+        return l
+    return r
 
 
 def can_split(nums, m, ssum):
@@ -35,3 +46,7 @@ def can_split(nums, m, ssum):
             if cnt > m:  # ssum定的太小，所以l=mid_1
                 return False
     return True
+
+nums=[7,2,5,10,8]
+m=2
+print splitArray(nums,m)

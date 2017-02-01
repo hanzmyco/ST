@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+'''
+根据坐标sort，根据实际情况，当坐标相同时，看先存左边还是右边
+'''
+
+
 import heapq
 def cmp2(a,b):
     if a[0] < b[0]:

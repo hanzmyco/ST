@@ -36,8 +36,8 @@ def wordBreak1(s,wordDict):
         for j in xrange(0, i):
             if len(dp[j]) != 0 and i - j in map and s[j:i] in map[i - j]:
                     dp[i].append(j)
-    return dfs(dp,len(s))
-
+    #return dfs(dp,len(s))
+    return non_recur(dp,len(s),s)
 def dfs(dp,l):
     if l==0:
         return ['']
@@ -49,6 +49,36 @@ def dfs(dp,l):
             else:
                 output.append(s[ite:l])
     return output
+
+
+def non_recur(dp,l,s):
+    stack=[l]
+    dic={}
+    while len(stack)!=0:
+        top=stack[len(stack)-1]
+        if top not in dic:
+            dic[top]=[]
+        if top==0:
+            dic[top]=['']
+            stack.pop()
+            continue
+        tag=0
+        for children in dp[top]:
+            if children not in dic:
+                stack.append(children)
+                tag=1
+                break
+        if tag:
+            continue
+        for children in dp[top]:
+            for prefix in dic[children]:
+                if prefix!='':
+                    dic[top].append(prefix+' '+s[children:top])
+                else:
+                    dic[top].append(s[children:top])
+        stack.pop()
+    return dic[l]
+
 
 
 

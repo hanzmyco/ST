@@ -18,7 +18,8 @@ def getSkyline(buildings):
         height.append((ite[0],-ite[2]))
         height.append((ite[1],ite[2]))
     #print height
-    height=sorted(height,cmp=cmp1)
+    #height=sorted(height,cmp=cmp1)
+    height.sort(cmp=cmp1)
     #print height
     heap=[0]
     pre=0
