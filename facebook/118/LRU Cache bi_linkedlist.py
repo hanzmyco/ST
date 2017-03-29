@@ -2,6 +2,7 @@
 '''
 用 一个double linked list 存cache，hashtable存<key，node>
 node: key,val,next,last
+node里要存key和val，因为要快速找到该结点对应的key
 '''
 import gc
 

@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+'''
+从头开始，如果val不是list，继续，是list就把这个list放到headset里
+'''
+
 import collections
 class ListNode(object):
     def __init__(self, x):
@@ -16,7 +21,7 @@ def flatten_linkedlist(head,head_set):
             if type(ite.val) == ListNode:
                 if ite.val not in head_set:
                     head_set[ite.val]=0
-                ite.val=None
+                ite.val=None  #让它的 val变为空
 
         tail=ite
         ite=ite.next

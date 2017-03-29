@@ -28,7 +28,6 @@ class trie(object):
                 if ite.val=='aaa':
                     print 'found'
                 if ite.val not in output:
-
                     output.add(ite.val)
             if i >= 1 and ((i - 1, j) not in dic or dic[(i - 1, j)] == 0):
                 self.dfs(board, m, n, i - 1, j, dic,ite, output)

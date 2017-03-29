@@ -1,18 +1,18 @@
 import heapq
 def get_time(schedule, k):
     past_time={}
-    time=0
+    time=1
     for index,ite in enumerate(schedule):
         if ite not in past_time:
-            time=max(time,index+1)
-
+            pass
         else:
-            if index - past_time[ite] <=k:
+            if index - past_time[ite]+1 <=k:
                 time=max(time,past_time[ite]+k+1)
             else:
-                time = max(time, index + 1)
+                pass
         past_time[ite] = time
-    return time
+        time+=1
+    return time-1
 
 def minimal_time(schedule,k):
     total_map={}
@@ -93,8 +93,8 @@ s=[]
 s.append('abbabbc')
 s.append('abbacbcd')
 s.append('aab')
-s.append('abcdefg')
+s.append('abcdafg')
 for ite in s:
-    #print get_time(ite,3)
-    minimal_time(ite,3)
-    minimal_time2(ite,3)
+    print get_time(ite,3)
+    #minimal_time(ite,3)
+    #minimal_time2(ite,3)

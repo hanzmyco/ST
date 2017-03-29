@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+'''
+问sub string里有几个palidrome
+'''
+
 def palindrome_substring(s):
     dp={}
     pali_sub={}

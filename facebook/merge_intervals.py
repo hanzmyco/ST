@@ -15,7 +15,6 @@ def cmp1(t1, t2):
     else:
         return 1
 
-
 def merge(intervals):
     """
     :type intervals: List[Interval]
@@ -45,8 +44,7 @@ def merge(intervals):
                     output.append(new_interval)
     return output
 
-a=[Interval(1,3)]
+a=[Interval(1,3),Interval(2,4),Interval(4,5),Interval(6,7)]
 output= merge(a)
 for ite in output:
-    print ite.start
-    print ite.end
+    print ite.start,ite.end

@@ -27,8 +27,10 @@ def addBinary(a, b):
             b_num = int(b[index_b])
         res = str((a_num + b_num + carry) % 2) + res
         carry = (a_num + b_num + carry) / 2
-        index_a -= 1
-        index_b -= 1
+        if index_a>=0:
+            index_a -= 1
+        if index_b>=0:
+            index_b -= 1
     if carry == 1:
         res = '1' + res
     return res

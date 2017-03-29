@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+'''
 4.中国小哥，非常nice， 一直follow我的思路。 1.input friends relation {{1，2}， {2，3}， {3，4}} 把用户存在两个group里， 每个group里大家都不互相认识。所以exp应该g1{1，3} g2{2，4}。
 其他情况和小哥讨论一下，我自己想如何设计都可以，比如所有人都不认。 很快写完，最后考虑corner case的时候，小哥提醒了一下。
 
@@ -9,3 +11,6 @@ dp=[int-max]*n
 for i in xrange(0,n-1):
     for j in xrange (i+1,min(,i+a[i]+1,n):
         dp[j]=min(dp[j],dp[i]+1)
+'''
+
+friends=[(1,2),(2,3),(3,4),(7,8),(4,8)]

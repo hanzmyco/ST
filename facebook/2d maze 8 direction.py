@@ -6,6 +6,7 @@ follow up 2:
 看看在que里的有没有能吸收y的，如果有，那么就break，留给另外的点来处理y，如果没有，
 就在相交子节点对里面加入x,y。相当于top的所有可达下层节点都有可能冲突，如果无法分配给
 其他同层节点
+
 '''
 
 from collections import deque
@@ -16,26 +17,30 @@ def isRoad0(x,y):
 def print_path(node):
     return
 def find_path_larger_than_a(a,s,t):
-    probability={}
     que=deque()
     que.append((s[0],s[1]))
-    map[(s[0],s[1])]=(1,None)
-    sub_que = deque()
+    map[(s[0],s[1])]=(1,None)  #store the probability and parent
     while len(que)!=0:
         top=que.popleft()
         prob=map(top)[0]
+        # 找到了
         if (top[0]-1,top[1])==(t[0],t[1]):
             print_path((t[0]-1,t[1]))
             return
+
         if (top[0]-1,top[1]) not in map:
             if prob*isRoad(top[0]-1,top[1])>=a:
                 map[(top[0]-1,top[1])]=(prob*isRoad(top[0]-1,top[1]),top)
+                que.append((top[0]-1,top[1]))
+
         elif prob*isRoad(top[0]-1,top[1]) > map[(top[0]-1,top[1])]:
             map[(top[0] - 1, top[1])]=(prob * isRoad(top[0] - 1, top[1]),top)
-        sub_que.append((top[0]-1,top[1]))
-        if len(que)==0:
-            que=sub_que
-            sub_que=deque()
+            que.append((top[0]-1,top[1]))
+
+        
+        # 其他七个方向
+
+
 
 
         '''
@@ -55,6 +60,7 @@ def find_L_Route(s,t):
             res.append(print_path(top))
             continue
         x,y=top[0]-1,top[1]
+        # first children 不用担心allocate
         top_tag=1
         collide_sub=[(x,y)]
         if (x,y) not in father:
@@ -62,6 +68,7 @@ def find_L_Route(s,t):
                 father[(x,y)]=top
                 top_tag=0
             else:
+                # 判断能否被allocate给其他节点
                 allocate=1
                 for ite in que:
                     if accesible(ite,(x,y)): # can allocate to others
@@ -69,6 +76,7 @@ def find_L_Route(s,t):
                         break
                 if allocate:
                     collide_sub.append((x,y))
+
 
 
 

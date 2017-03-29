@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+'''
+把k个队列每个队首结点入栈，最小的pop出来，把它的下一个放进去，
+'''
+
 import heapq
 class ListNode(object):
      def __init__(self, x):

@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+'''
+start end，start扎下来，end不停往后探，用表记录下来一路访问过的是要的字母的位置，之后start往后探的时候就用这个
+'''
+
 import collections
 
 def redo(s,t):
@@ -49,6 +54,7 @@ def redo(s,t):
                 num_each[s[index]]+=1
                 del position[index]
             else:
+                start=index
                 break
     return res
 

@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+'''
+按结束时间排序
+'''
+
 def cmp1(m1,m2):
     if m1[1] <m2[1]:
         return -1
@@ -14,6 +19,9 @@ def findLargestBefore(i,meetings,dp):  # not attached
 
 
 
+'''
+与上一个相比，dp[j]代表算到第J个为止，所有会议的区间情况以及weight情况
+'''
 
 def maxWeight(meetings):
     meetings.sort(cmp1)

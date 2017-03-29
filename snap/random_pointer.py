@@ -6,6 +6,7 @@
 #         self.random = None
 
 class Solution(object):
+    # wrong !
     def copyRandomList(self, head):
         """
         :type head: RandomListNode
