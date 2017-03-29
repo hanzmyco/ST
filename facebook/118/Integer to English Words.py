@@ -1,3 +1,19 @@
+# -*- coding: utf-8 -*-
+'''
+每次处理三位, map1存【'',one，two,ninteen], map2存【""，""，twenty,thirty, ninty]
+对于一个3位数，a=num/100,看看有几百，b=num%100, c%10, c管个位
+如果b<20，那么res=map1[b], 否则res=map2[b/10],如果c！=0,res+=' '+ map1[c]
+如果a>0, res1=map1[a]+' '+hundred, b!=0就 return res1 + ' ' +res
+否则return res1
+
+如果a==0；return res
+每次处理3位，先处理个十百，然后/1000, 放进去看看
+
+'''
+
+
+
+
 def converHundred(num):
     map1 = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve",
             "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
@@ -38,4 +54,4 @@ def numberToWords(num):
         return 'Zero'
     return res[:l]
 
-print numberToWords(1000)
+print numberToWords(1257680)

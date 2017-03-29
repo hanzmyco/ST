@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+'''
+这题关键是delete insert in O(1),其实就是用dic来存 值得位置，用array来存真正的值
+删除的时候就把该值换到最后，然后删掉最后就行了
+'''
+
 def __init__(self):
     """
     Initialize your data structure here.

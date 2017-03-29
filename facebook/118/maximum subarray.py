@@ -1,5 +1,6 @@
+import sys
 def maxSubArray(nums):
-    res=-10000
+    res=-sys.maxint-1
     curSum=0
     for ite in nums:
         curSum+=ite

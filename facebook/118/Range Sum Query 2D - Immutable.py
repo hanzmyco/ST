@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+'''
+几何判断
+
+'''
+
+
 class NumMatrix(object):
     def __init__(self, matrix):
         """

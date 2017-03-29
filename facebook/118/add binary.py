@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+'''
+从最右边开始+，res= str((anum+bnum+carry)%2) + res
+
+'''
+
 def addBinary(a, b):
     """
     :type a: str

@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+'''
+不会
+'''
+
+
 def maximalSquare(matrix):
     if len(matrix)==0 or len(matrix[0])==0:
         return 0

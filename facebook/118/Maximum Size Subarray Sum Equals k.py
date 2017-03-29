@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+'''
+连续和，用一个map存连续和最后的位置，如果和k相等，更新res，
+否则看看s-k在不在，在的话
+那么更新res和 (i-map[s-k],res)
+'''
+
+
+
 def maxSubArrayLen(self, nums, k):
     """
     :type nums: List[int]

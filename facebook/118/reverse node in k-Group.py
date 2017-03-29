@@ -1,5 +1,17 @@
 # -*- coding: utf-8 -*-
 '''
+递归的调用，每次递归的时候先把前k个给reverse，然后继续递归
+对于reverse程序，输入的是头和尾巴（左闭右开），
+
+def reverse(head,tail):
+    pre=tail
+    while head!=tail:
+        ite=head.next
+        head.next=pre
+        pre=head
+        head=ite
+    return pre
+
 
 '''
 

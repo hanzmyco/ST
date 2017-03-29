@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+'''
+n 》 0 或小于0 或=0 或 1
+pow(x,n)=pow(x,n/2)* pow(x,n/2) * pow(x,n- n/2 *2)
+
+
+'''
 def myPow(self, x, n):
     """
     :type x: float

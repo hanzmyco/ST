@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+'''
+假设最后一个array有充足的空间，用一个len——list来存所有list的长度，用最大堆来存每个List的最大一个数
+就是把所有array都移到最后一个array的最后。从后往前填充
+'''
+
 import heapq
 def merge_k_sorted_array(arrays,last_index):
     l=len(arrays)

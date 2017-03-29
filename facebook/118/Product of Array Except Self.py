@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+'''
+res 一开始存每个数左边的乘积
+然后从右边起用right存除了右边的，然后乘起来
+'''
 def productExceptSelf(nums):
     """
     :type nums: List[int]

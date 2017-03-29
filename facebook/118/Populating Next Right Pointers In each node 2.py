@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+'''
+用leftmost决定下一层的最左边，cur等于leftmost，连接的时候注意用p，p往右边走，
+cur如果连接了就往右边走，注意p没有孩子的话就一直往右走
+'''
+
 def connect(self, root):
     if root == None:
         return

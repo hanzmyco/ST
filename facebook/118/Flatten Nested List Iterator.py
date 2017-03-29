@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+'''
+什么鬼
+
+'''
+
 class NestedIterator(object):
     def __init__(self, nestedList):
         """
@@ -14,7 +20,7 @@ class NestedIterator(object):
         :rtype: int
         """
         if self.hasNext():
-            return self.que.pop.getInteger()
+            return self.stack.pop.getInteger()
 
     def hasNext(self):
         """
