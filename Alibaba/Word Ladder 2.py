@@ -1,4 +1,4 @@
-import queue
+import Queue
 import copy
 def build_link(word,wordSet,link_dic):
     for index in range(0,len(word)):
@@ -20,7 +20,7 @@ def dfsprint(child,father_dic,output_list,begin_word):
         for father in father_dic[child]:
                 new_output=copy.deepcopy(output_list)
                 one_list=dfsprint(father,father_dic,new_output,begin_word)
-                return_list.append(one_list)
+                return_list.extend(one_list)
     else:
         return_list.extend(output_list)
     return return_list
@@ -39,44 +39,42 @@ def findLadders(beginWord, endWord, wordList):
     for word in wordList:
         build_link(word,wordSet,link_dic)
     showed_set=set()
-    que=queue.Queue()
+    que=Queue.Queue()
     que.put(beginWord)
     showed_set.add(beginWord)
     father_dic={}
     output_all=[]
-    next_que = queue.Queue()
+    next_que = set()
     tag=True
     father_dic[beginWord]=set()
-    this_level_set=set()
+
+
     while not que.empty():
         top=que.get()
-        this_level=set()
         if top in link_dic:
             if top =='ted':
                 print('found')
             for child in link_dic[top]:
-                    if child not in showed_set :
-                        if child not in father_dic :
-                            father_dic[child] = set()
-                        father_dic[child].add(top)
-
-                    if child !=endWord and child not in showed_set and child not in this_level:
-                        next_que.put(child)
-
-                    elif child==endWord:
+                if child not in showed_set :
+                    if child not in father_dic :
+                        father_dic[child] = set()
+                    father_dic[child].add(top)
+                    if child !=endWord:
+                        next_que.add(child)
+                    else:
                         tag=False
-                    this_level.add(child)
         if que.empty() and tag:
-            que=next_que
-            next_que=queue.Queue()
-            if child not in showed_set:
-                showed_set.add(child)
+            que=Queue.Queue()
+            for ite in next_que:
+                que.put(ite)
+                showed_set.add(ite)
+            next_que=set()
 
     output = [[]]
     new_output = dfsprint(endWord, father_dic, output,beginWord)
     output_all.extend(new_output)
 
     return output_all
-#print(findLadders('hit','cog',["hot","dot","dog","lot","log"]))
+print(findLadders('hit','cog',["hot","dot","dog","lot","log",'cog']))
 #print(findLadders('a','c',['a','b','c']))
-print(findLadders("red","tax",["ted","tex","red","tax","tad","den","rex","pee"]))
+#print(findLadders("red","tax",["ted","tex","red","tax","tad","den","rex","pee"]))
