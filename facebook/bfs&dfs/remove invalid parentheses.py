@@ -19,7 +19,7 @@ def get_one_example(s):
     stack=[]
     l_stack=0
     temp=[]
-    for index in xrange(0,len(s)):
+    for index in range(0,len(s)):
         temp.append(s[index])
         if s[index]=='(':
             stack.append(index)
@@ -43,7 +43,7 @@ def get_one_example(s):
     output=''
     for ite in temp:
         output+=ite
-    print output
+    print (output)
 
 def calc_Mistake(s):
     a=0
@@ -61,7 +61,7 @@ def dfs_helper(s,visited):
     if numMistake ==0:
         return [s]
     ans=[]
-    for index in xrange(0,len(s)):
+    for index in range(0,len(s)):
         if s[index] in ('(',')'):
             new_s=s[:index]+s[index+1:]
             if new_s not in visited:
@@ -72,7 +72,7 @@ def dfs_helper(s,visited):
 
 def dfs_helper1(s,visited,numMistake):
     ans=[]
-    for index in xrange(0,len(s)):
+    for index in range(0,len(s)):
         if s[index] in ('(',')'):
             new_s=s[:index]+s[index+1:]
             if new_s not in visited:
@@ -133,7 +133,7 @@ def bfs2(s):
         while l != 0:
             top = que.popleft()
             l -= 1
-            for index in xrange(0, len(top)):
+            for index in range(0, len(top)):
                 next_str = top[:index] + top[index + 1:]
                 if next_str in visited:
                     continue

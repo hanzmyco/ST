@@ -10,17 +10,18 @@ bfs：
 
 
 '''
-import Queue
+import queue.Queue
+import collections.deque
 def bfs(grid):
-    que=Queue.Queue()
+    que=queue.Queue()
     dic={}
     m=len(grid)
     n=0
     if m>0:
        n=len(grid[0])
     num=0
-    for i in xrange(0,m):
-        for j in xrange(0,n):
+    for i in range(0,m):
+        for j in range(0,n):
             if grid[i][j]=='1' and (i,j) not in dic:
                 num+=1
                 que.put((i,j))
@@ -52,8 +53,8 @@ def dfs_norecur(grid):
     if m>0:
         n=len(grid[0])
     dic={}
-    for x in xrange(0,m):
-        for y in xrange(0,n):
+    for x in range(0,m):
+        for y in range(0,n):
             if grid[x][y]=='1' and (x,y) not in dic:
                 num+=1
                 stack.append((x,y))
@@ -99,8 +100,8 @@ def dfs(grid):
     if m > 0:
         n = len(grid[0])
     dic = {}
-    for i in xrange(0, m):
-        for j in xrange(0, n):
+    for i in range(0, m):
+        for j in range(0, n):
             if grid[i][j] == '1' and (i, j) not in dic:
                 num += 1
                 recur(grid, i, j, dic)
@@ -118,8 +119,8 @@ def followup(grid):
        n=len(grid[0])
     num=0
     vectors=set()
-    for i in xrange(0,m):
-        for j in xrange(0,n):
+    for i in range(0,m):
+        for j in range(0,n):
             if grid[i][j]=='1' and (i,j) not in dic:
                 points=[]
                 low_r=i
@@ -199,8 +200,8 @@ def union_find(grid):
     n=0
     if m!=0:
         n=len(grid[0])
-    for i in xrange(0,m):
-        for j in xrange(0,n):
+    for i in range(0,m):
+        for j in range(0,n):
             if grid[i][j]=='1':
                 parent[(i,j)]=(i,j)
                 numOfChild[(i,j)]=1
