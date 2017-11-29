@@ -10,9 +10,9 @@ bfs：
 
 
 '''
-from collections import deque
+import Queue
 def bfs(grid):
-    que=deque()
+    que=Queue.Queue()
     dic={}
     m=len(grid)
     n=0
@@ -23,24 +23,24 @@ def bfs(grid):
         for j in xrange(0,n):
             if grid[i][j]=='1' and (i,j) not in dic:
                 num+=1
-                que.append((i,j))
+                que.put((i,j))
                 dic[(i,j)]=1
                 while len(que)!=0:
-                    top=que.popleft()
+                    top=que.get()
                     x=top[0]
                     y=top[1]
                     if x>0 and grid[x-1][y]=='1' and (x-1,y) not in dic:
                         dic[(x-1,y)]=1
-                        que.append((x-1,y))
+                        que.put((x-1,y))
                     if x < m-1 and grid[x + 1][y] == '1' and (x + 1, y) not in dic:
                         dic[(x + 1, y)] = 1
-                        que.append((x + 1, y))
+                        que.put((x + 1, y))
                     if y > 0 and grid[x][y-1] == '1' and (x, y-1) not in dic:
                         dic[(x, y-1)] = 1
-                        que.append((x, y-1))
+                        que.put((x, y-1))
                     if y < n-1 and grid[x][y+1] == '1' and (x, y+1) not in dic:
                         dic[(x, y+1)] = 1
-                        que.append((x, y+1))
+                        que.put((x, y+1))
     return num
 
 
