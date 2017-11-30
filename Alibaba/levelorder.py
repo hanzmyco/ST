@@ -1,35 +1,40 @@
-import Queue
+import queue
+from collections import deque
 class TreeNode(object):
      def __init__(self, x):
          self.val = x
          self.left = None
          self.right = None
-a=Queue.Queue()
-a.put(5)
-print(a.get())
 
 def leveloRDER(root):
     if not root:
-        return []
-    que = Queue.Queue()
-    que.put(root)
+        return None
+    que = deque()
+
+
+    que.append(root)
     output = []
+    target=root
     while True:
         inner_output = []
-        next_level = Queue.Queue()
-        while not que.empty():
-            head = que.get()
+        next_level = deque()
+        while len(que)!=0:
+            head = que.popleft()
             inner_output.append(head.val)
             if head.left!=None:
-                next_level.put(head.left)
+                next_level.append(head.left)
             if head.right!=None:
-                next_level.put(head.right)
+                next_level.append(head.right)
         if inner_output != []:
             output.append(inner_output)
-        if not next_level.empty():
+        if len(next_level)!=0:
             que = next_level
+            target=que.popleft()
+            que.appendleft(target)
+
         else:
             break
+    print(target.val)
     return output
 
 a=TreeNode(3)

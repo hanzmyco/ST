@@ -1,4 +1,4 @@
-import Queue
+import queue
 import copy
 def build_link(word,wordSet,link_dic):
     for index in range(0,len(word)):
@@ -39,7 +39,7 @@ def findLadders(beginWord, endWord, wordList):
     for word in wordList:
         build_link(word,wordSet,link_dic)
     showed_set=set()
-    que=Queue.Queue()
+    que=queue.Queue()
     que.put(beginWord)
     showed_set.add(beginWord)
     father_dic={}
@@ -64,7 +64,7 @@ def findLadders(beginWord, endWord, wordList):
                     else:
                         tag=False
         if que.empty() and tag:
-            que=Queue.Queue()
+            que=queue.Queue()
             for ite in next_que:
                 que.put(ite)
                 showed_set.add(ite)

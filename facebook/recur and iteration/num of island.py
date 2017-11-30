@@ -52,8 +52,8 @@ def dfs_norecur(grid):
     if m>0:
         n=len(grid[0])
     dic={}
-    for x in xrange(0,m):
-        for y in xrange(0,n):
+    for x in range(0,m):
+        for y in range(0,n):
             if grid[x][y]=='1' and (x,y) not in dic:
                 num+=1
                 stack.append((x,y))
