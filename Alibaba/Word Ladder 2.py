@@ -77,4 +77,4 @@ def findLadders(beginWord, endWord, wordList):
     return output_all
 print(findLadders('hit','cog',["hot","dot","dog","lot","log",'cog']))
 #print(findLadders('a','c',['a','b','c']))
-#print(findLadders("red","tax",["ted","tex","red","tax","tad","den","rex","pee"]))
+print(findLadders("red","tax",["ted","tex","red","tax","tad","den","rex","pee"]))
